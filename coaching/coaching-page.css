@@ -1,0 +1,448 @@
+/* ==========================================================================
+   Private coaching sales page
+   Loaded after /styles.css. Inherits the site palette, Inter, and .btn styles.
+   Palette in use:
+     bg        #050509
+     panel     rgba(15, 23, 42, 0.9)
+     hairline  rgba(148, 163, 184, 0.22)
+     text      #f9fafb
+     body      #d1d5db
+     muted     #9ca3af
+     accent    #38bdf8 / #3b82f6
+   ========================================================================== */
+
+/* ===== Keyboard focus ===== */
+a:focus-visible,
+button:focus-visible,
+iframe:focus-visible {
+  outline: 2px solid #38bdf8;
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.pc-skip {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: 0.6rem 1rem;
+  background: #0f172a;
+  border: 1px solid rgba(148, 163, 184, 0.5);
+  border-radius: 0 0 0.6rem 0;
+  color: #f9fafb;
+  font-size: 0.8rem;
+  text-decoration: none;
+}
+
+.pc-skip:focus {
+  left: 0;
+}
+
+/* ===== Layout ===== */
+.pc-main {
+  padding: 0 0 1rem;
+}
+
+.pc-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* Text measure. Everything stays flush left inside the container. */
+.pc-measure {
+  max-width: 62ch;
+}
+
+.pc-wide {
+  max-width: 880px;
+}
+
+.pc-section {
+  padding: 4.5rem 0;
+  border-top: 1px solid rgba(148, 163, 184, 0.22);
+}
+
+.pc-hero {
+  padding: 4rem 0 4.5rem;
+  border-top: 0;
+}
+
+/* ===== Type ===== */
+.pc-eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.7rem;
+  font-weight: 600;
+  color: #9ca3af;
+  margin-bottom: 0.9rem;
+}
+
+.pc-h1 {
+  font-size: clamp(2.1rem, 5.4vw, 3.2rem);
+  line-height: 1.12;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  margin-bottom: 1.4rem;
+  max-width: 24ch;
+}
+
+.pc-h2 {
+  font-size: clamp(1.45rem, 3.2vw, 1.95rem);
+  line-height: 1.25;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  margin-bottom: 1.1rem;
+  max-width: 30ch;
+}
+
+.pc-h3 {
+  font-size: 1.02rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  margin-bottom: 0.4rem;
+  color: #f9fafb;
+}
+
+.pc-lead {
+  font-size: 1.12rem;
+  color: #e5e7eb;
+  margin-bottom: 1.6rem;
+}
+
+.pc-body {
+  color: #d1d5db;
+}
+
+.pc-body + .pc-body {
+  margin-top: 1.1rem;
+}
+
+.pc-quiet,
+.card p.pc-quiet {
+  color: #9ca3af;
+  font-size: 0.9rem;
+}
+
+/* ===== Hero ===== */
+.pc-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.4rem;
+}
+
+.pc-hero .btn {
+  padding: 0.85rem 1.9rem;
+}
+
+.pc-hero-meta {
+  font-size: 0.85rem;
+  color: #9ca3af;
+  letter-spacing: 0.04em;
+}
+
+/* ===== Video ===== */
+.pc-video {
+  max-width: 880px;
+  margin-top: 1.8rem;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 1rem;
+  overflow: hidden;
+  background: #020617;
+}
+
+.pc-video-frame {
+  position: relative;
+  aspect-ratio: 16 / 9;
+}
+
+.pc-video-frame iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+}
+
+/* ===== Lists ===== */
+.pc-list {
+  list-style: none;
+  max-width: 62ch;
+}
+
+.pc-list li {
+  position: relative;
+  padding-left: 1.6rem;
+  color: #d1d5db;
+  margin-bottom: 0.9rem;
+}
+
+.pc-list li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.68em;
+  width: 7px;
+  height: 7px;
+  border-radius: 999px;
+  background: #3b82f6;
+}
+
+.pc-list li:last-child {
+  margin-bottom: 0;
+}
+
+/* Four places the same thing shows up */
+.pc-places {
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  max-width: 880px;
+  margin: 1.8rem 0;
+}
+
+.pc-places .pc-place {
+  padding-left: 1.1rem;
+  border-left: 2px solid rgba(59, 130, 246, 0.55);
+}
+
+.pc-place p {
+  font-size: 0.94rem;
+  color: #d1d5db;
+}
+
+/* ===== The four weeks ===== */
+.pc-weeks {
+  list-style: none;
+  max-width: 800px;
+  margin-top: 2rem;
+}
+
+.pc-week {
+  display: grid;
+  grid-template-columns: 4rem minmax(0, 1fr);
+  gap: 0.5rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid rgba(148, 163, 184, 0.16);
+}
+
+.pc-week:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.pc-week-n {
+  font-size: 0.95rem;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: 0.08em;
+  color: #38bdf8;
+  padding-top: 0.12rem;
+}
+
+.pc-week p {
+  font-size: 0.95rem;
+  color: #d1d5db;
+}
+
+/* ===== Two column split (promise / not promising) ===== */
+.pc-split {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.5rem;
+  max-width: 880px;
+  margin-top: 1.8rem;
+  align-items: start;
+}
+
+.pc-split .card ul {
+  list-style: none;
+  margin-top: 0.9rem;
+}
+
+.pc-split .card li {
+  position: relative;
+  padding-left: 1.3rem;
+  font-size: 0.93rem;
+  color: #d1d5db;
+  margin-bottom: 0.7rem;
+}
+
+.pc-split .card li:last-child {
+  margin-bottom: 0;
+}
+
+.pc-split .card li::before {
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: 700;
+}
+
+.pc-yes li::before {
+  content: "+";
+  color: #38bdf8;
+}
+
+.pc-no li::before {
+  content: "\2013";
+  color: #6b7280;
+}
+
+.pc-no {
+  background: rgba(15, 23, 42, 0.5);
+}
+
+/* ===== Guarantee ===== */
+.pc-guarantee {
+  max-width: 62ch;
+  margin-top: 1.4rem;
+  padding: 1.4rem 0 1.4rem 1.5rem;
+  border-left: 2px solid #38bdf8;
+}
+
+.pc-guarantee p {
+  font-size: 1.12rem;
+  color: #f9fafb;
+  line-height: 1.55;
+}
+
+/* ===== Price ===== */
+.pc-price {
+  max-width: 560px;
+  margin-top: 1.8rem;
+}
+
+.pc-price-fig {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-bottom: 0.3rem;
+}
+
+.pc-price-amount {
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  color: #f9fafb;
+  line-height: 1;
+}
+
+.pc-price-terms {
+  font-size: 0.85rem;
+  color: #9ca3af;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.pc-price dl {
+  margin-top: 1.2rem;
+  border-top: 1px solid rgba(148, 163, 184, 0.18);
+  padding-top: 1rem;
+  font-size: 0.92rem;
+}
+
+.pc-price div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.35rem 0;
+}
+
+.pc-price dt {
+  color: #9ca3af;
+}
+
+.pc-price dd {
+  color: #e5e7eb;
+  text-align: right;
+}
+
+/* ===== Placeholder block (Sean writes this) ===== */
+.pc-placeholder {
+  max-width: 62ch;
+  margin-top: 1.2rem;
+  padding: 1.4rem 1.5rem;
+  border: 1px dashed rgba(148, 163, 184, 0.5);
+  border-radius: 1rem;
+  background: rgba(15, 23, 42, 0.45);
+  color: #9ca3af;
+  font-size: 0.93rem;
+}
+
+.pc-placeholder strong {
+  display: block;
+  margin-bottom: 0.5rem;
+  color: #e5e7eb;
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+/* ===== Apply ===== */
+.pc-apply .btn {
+  padding: 0.85rem 1.9rem;
+  margin-bottom: 1.1rem;
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 768px) {
+  .pc-section {
+    padding: 3rem 0;
+  }
+
+  .pc-hero {
+    padding: 2.5rem 0 3rem;
+  }
+
+  .pc-h1 {
+    max-width: none;
+  }
+
+  .pc-lead {
+    font-size: 1.05rem;
+  }
+
+  .pc-places,
+  .pc-split {
+    grid-template-columns: 1fr;
+  }
+
+  .pc-week {
+    grid-template-columns: 3rem minmax(0, 1fr);
+  }
+
+  .pc-hero-actions .btn,
+  .pc-apply .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .pc-guarantee {
+    padding-left: 1.1rem;
+  }
+
+  .pc-video {
+    border-radius: 0.75rem;
+  }
+}
+
+/* ===== Reduced motion ===== */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .btn:hover,
+  .btn-primary:hover {
+    transform: none;
+  }
+}
