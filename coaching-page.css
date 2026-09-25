@@ -20,24 +20,6 @@ iframe:focus-visible {
   border-radius: 4px;
 }
 
-.pc-skip {
-  position: absolute;
-  left: -9999px;
-  top: 0;
-  z-index: 100;
-  padding: 0.6rem 1rem;
-  background: #0f172a;
-  border: 1px solid rgba(148, 163, 184, 0.5);
-  border-radius: 0 0 0.6rem 0;
-  color: #f9fafb;
-  font-size: 0.8rem;
-  text-decoration: none;
-}
-
-.pc-skip:focus {
-  left: 0;
-}
-
 /* ===== Layout ===== */
 .pc-main {
   padding: 0 0 1rem;
@@ -64,7 +46,7 @@ iframe:focus-visible {
 }
 
 .pc-hero {
-  padding: 4rem 0 4.5rem;
+  padding: 5rem 0 4.5rem;
   border-top: 0;
 }
 
@@ -395,7 +377,7 @@ iframe:focus-visible {
   }
 
   .pc-hero {
-    padding: 2.5rem 0 3rem;
+    padding: 3.25rem 0 3rem;
   }
 
   .pc-h1 {
