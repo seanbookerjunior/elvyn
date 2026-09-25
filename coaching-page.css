@@ -78,6 +78,11 @@ iframe:focus-visible {
   max-width: 30ch;
 }
 
+/* Matches btn-primary's gradient start color */
+.pc-accent {
+  color: #3b82f6;
+}
+
 .pc-h3 {
   font-size: 1.02rem;
   font-weight: 600;
