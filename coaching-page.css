@@ -20,6 +20,18 @@ iframe:focus-visible {
   border-radius: 4px;
 }
 
+/* ===== Brand mark ===== */
+.pc-brand {
+  padding-top: 1.5rem;
+}
+
+.pc-brand-logo {
+  display: block;
+  width: 40px;
+  height: 40px;
+  object-fit: contain;
+}
+
 /* ===== Layout ===== */
 .pc-main {
   padding: 0 0 1rem;
@@ -46,8 +58,16 @@ iframe:focus-visible {
 }
 
 .pc-hero {
-  padding: 5rem 0 4.5rem;
+  padding: 2.5rem 0 4.5rem;
   border-top: 0;
+}
+
+.pc-hero-banner {
+  display: block;
+  width: 100%;
+  max-width: 340px;
+  height: auto;
+  margin-bottom: 2rem;
 }
 
 /* ===== Type ===== */
@@ -80,7 +100,7 @@ iframe:focus-visible {
 
 /* Matches btn-primary's gradient start color */
 .pc-accent {
-  color: #3b82f6;
+  color: #438afc;
 }
 
 .pc-h3 {
@@ -382,7 +402,12 @@ iframe:focus-visible {
   }
 
   .pc-hero {
-    padding: 3.25rem 0 3rem;
+    padding: 1.75rem 0 3rem;
+  }
+
+  .pc-hero-banner {
+    max-width: 240px;
+    margin-bottom: 1.5rem;
   }
 
   .pc-h1 {
