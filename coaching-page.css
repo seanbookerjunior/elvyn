@@ -43,9 +43,28 @@ iframe:focus-visible {
   padding: 0 1.5rem;
 }
 
-/* Text measure. Everything stays flush left inside the container. */
+/* Every block sits in a centered column. Text inside stays flush left,
+   and all blocks in the column share the same left edge. */
+.pc-container > * {
+  max-width: 880px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Wider blocks (video, grids) are centered on their own, wider column. */
+.pc-container > .pc-video,
+.pc-container > .pc-places,
+.pc-container > .pc-split {
+  max-width: none;
+}
+
+/* Logo stays pinned to the top left, outside the centered column. */
+.pc-brand .pc-brand-logo {
+  margin-left: 0;
+}
+
 .pc-measure {
-  max-width: 62ch;
+  max-width: 880px;
 }
 
 .pc-wide {
@@ -65,9 +84,9 @@ iframe:focus-visible {
 .pc-hero-banner {
   display: block;
   width: 100%;
-  max-width: 340px;
+  max-width: 460px;
   height: auto;
-  margin-bottom: 2rem;
+  margin-bottom: 2.5rem;
 }
 
 /* ===== Type ===== */
@@ -86,7 +105,6 @@ iframe:focus-visible {
   font-weight: 700;
   letter-spacing: 0.01em;
   margin-bottom: 1.4rem;
-  max-width: 24ch;
 }
 
 .pc-h2 {
@@ -95,7 +113,6 @@ iframe:focus-visible {
   font-weight: 600;
   letter-spacing: 0.02em;
   margin-bottom: 1.1rem;
-  max-width: 30ch;
 }
 
 /* Matches btn-primary's gradient start color */
@@ -151,7 +168,6 @@ iframe:focus-visible {
 
 /* ===== Video ===== */
 .pc-video {
-  max-width: 880px;
   margin-top: 1.8rem;
   border: 1px solid rgba(148, 163, 184, 0.35);
   border-radius: 1rem;
@@ -176,7 +192,6 @@ iframe:focus-visible {
 /* ===== Lists ===== */
 .pc-list {
   list-style: none;
-  max-width: 62ch;
 }
 
 .pc-list li {
@@ -207,8 +222,8 @@ iframe:focus-visible {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.5rem;
-  max-width: 880px;
-  margin: 1.8rem 0;
+  margin-top: 1.8rem;
+  margin-bottom: 1.8rem;
 }
 
 .pc-places .pc-place {
@@ -224,7 +239,6 @@ iframe:focus-visible {
 /* ===== The four weeks ===== */
 .pc-weeks {
   list-style: none;
-  max-width: 800px;
   margin-top: 2rem;
 }
 
@@ -260,7 +274,6 @@ iframe:focus-visible {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 1.5rem;
-  max-width: 880px;
   margin-top: 1.8rem;
   align-items: start;
 }
@@ -305,7 +318,6 @@ iframe:focus-visible {
 
 /* ===== Guarantee ===== */
 .pc-guarantee {
-  max-width: 62ch;
   margin-top: 1.4rem;
   padding: 1.4rem 0 1.4rem 1.5rem;
   border-left: 2px solid #38bdf8;
@@ -319,7 +331,6 @@ iframe:focus-visible {
 
 /* ===== Price ===== */
 .pc-price {
-  max-width: 560px;
   margin-top: 1.8rem;
 }
 
@@ -368,9 +379,19 @@ iframe:focus-visible {
   text-align: right;
 }
 
+/* ===== My story photo ===== */
+.pc-story-photo img {
+  display: block;
+  width: 100%;
+  max-width: 180px;
+  height: auto;
+  margin-top: 1.2rem;
+  border: 1px solid rgba(148, 163, 184, 0.35);
+  border-radius: 1rem;
+}
+
 /* ===== Placeholder block (Sean writes this) ===== */
 .pc-placeholder {
-  max-width: 62ch;
   margin-top: 1.2rem;
   padding: 1.4rem 1.5rem;
   border: 1px dashed rgba(148, 163, 184, 0.5);
@@ -406,7 +427,7 @@ iframe:focus-visible {
   }
 
   .pc-hero-banner {
-    max-width: 240px;
+    max-width: 320px;
     margin-bottom: 1.5rem;
   }
 
