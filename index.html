@@ -20,7 +20,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="/styles.css?v=2" />
-  <link rel="stylesheet" href="/coaching-page.css?v=2" />
+  <link rel="stylesheet" href="/coaching-page.css?v=4" />
   <link rel="icon" type="image/png" href="/images/Elvyn new logo.PNG" />
 </head>
 
@@ -39,7 +39,7 @@
     <section class="pc-section pc-hero">
       <div class="pc-container">
          <img src="/images/elvyn site large banner.png" alt="ELVYN" class="pc-hero-banner" />
-        <p class="pc-eyebrow">Four weeks, one on one, fixing the thing underneath it.</p>
+        <p class="pc-eyebrow">Four weeks, one on one, fixing the real problem underneath.</p>
         <h2 class="pc-h2">Your career works. Your dating life doesn't. </h2>
 
         <div class="pc-video">
@@ -52,6 +52,11 @@
               referrerpolicy="strict-origin-when-cross-origin"
               allowfullscreen></iframe>
           </div>
+        </div>
+        <div class="pc-cta">
+          <a href="https://docs.google.com/forms/d/1QTKGpq5ZB4opZyXUuT25lgoYxFFZ8b_aU_cnFdL5gMw/viewform" class="btn btn-primary">
+            Start the application
+          </a>
         </div>
       </div>
     </section>
@@ -124,8 +129,22 @@
         <br>
         <p>I spent the next 5 years figuring out how to build that, and then I spent two years teaching other men how to do it. In short, I do it for the men who never get a chance because all of you deserve one. </p>
         <div class="pc-story-photo">
-          <img src="/images/IMG_8144.jpg" alt="Sean in a backwards hat" loading="lazy" width="1290" height="1290" />
+          <button type="button" class="pc-zoom" data-zoom="testimonials-modal" aria-label="Enlarge messages from viewers">
+            <img src="/images/testimonials.png" alt="Screenshots of messages from viewers thanking Sean for his advice" loading="lazy" width="1400" height="790" />
+          </button>
+          <p class="pc-quiet pc-zoom-hint">Click to enlarge</p>
         </div>
+
+        <dialog id="testimonials-modal" class="pc-modal" aria-label="Messages from viewers">
+          <button type="button" class="pc-modal-close" aria-label="Close">&times;</button>
+          <img src="/images/testimonials.png" alt="Screenshots of messages from viewers thanking Sean for his advice" width="1400" height="790" />
+        </dialog>
+        </div>
+
+        <div class="pc-cta">
+          <a href="https://docs.google.com/forms/d/1QTKGpq5ZB4opZyXUuT25lgoYxFFZ8b_aU_cnFdL5gMw/viewform" class="btn btn-primary">
+            Start the application
+          </a>
         </div>
       </div>
     </section>
@@ -302,6 +321,15 @@
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    // Click-to-enlarge images
+    document.querySelectorAll("[data-zoom]").forEach(function (btn) {
+      var modal = document.getElementById(btn.dataset.zoom);
+      btn.addEventListener("click", function () { modal.showModal(); });
+      modal.querySelector(".pc-modal-close").addEventListener("click", function () { modal.close(); });
+      // Close when clicking the backdrop
+      modal.addEventListener("click", function (e) { if (e.target === modal) modal.close(); });
+    });
   </script>
 
 </body>

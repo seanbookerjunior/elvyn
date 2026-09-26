@@ -379,15 +379,75 @@ iframe:focus-visible {
   text-align: right;
 }
 
-/* ===== My story photo ===== */
-.pc-story-photo img {
+/* ===== My story photo (click to enlarge) ===== */
+.pc-zoom {
   display: block;
   width: 100%;
-  max-width: 180px;
-  height: auto;
+  max-width: 480px;
   margin-top: 1.2rem;
+  padding: 0;
   border: 1px solid rgba(148, 163, 184, 0.35);
   border-radius: 1rem;
+  overflow: hidden;
+  background: none;
+  cursor: zoom-in;
+  transition: border-color 0.2s ease;
+}
+
+.pc-zoom:hover {
+  border-color: #38bdf8;
+}
+
+.pc-zoom img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.pc-zoom-hint {
+  margin-top: 0.5rem;
+  font-size: 0.8rem;
+}
+
+.pc-modal {
+  position: fixed;
+  inset: 0;
+  margin: auto;
+  width: min(1400px, 95vw);
+  max-width: none;
+  max-height: 92vh;
+  padding: 0;
+  border: 0;
+  border-radius: 0.75rem;
+  background: #fff;
+  overflow: auto;
+}
+
+.pc-modal::backdrop {
+  background: rgba(2, 6, 23, 0.85);
+}
+
+.pc-modal img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.pc-modal-close {
+  position: sticky;
+  top: 0.6rem;
+  float: right;
+  margin: 0.6rem 0.6rem -3rem 0;
+  width: 2.4rem;
+  height: 2.4rem;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(2, 6, 23, 0.8);
+  color: #f9fafb;
+  font-size: 1.5rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 1;
 }
 
 /* ===== Placeholder block (Sean writes this) ===== */
@@ -408,6 +468,15 @@ iframe:focus-visible {
   font-size: 0.7rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
+}
+
+/* ===== Mid-page application buttons ===== */
+.pc-cta {
+  margin-top: 2rem;
+}
+
+.pc-cta .btn {
+  padding: 0.85rem 1.9rem;
 }
 
 /* ===== Apply ===== */
@@ -449,6 +518,7 @@ iframe:focus-visible {
   }
 
   .pc-hero-actions .btn,
+  .pc-cta .btn,
   .pc-apply .btn {
     width: 100%;
     justify-content: center;
