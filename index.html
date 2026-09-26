@@ -20,7 +20,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="/styles.css?v=2" />
-  <link rel="stylesheet" href="/coaching-page.css?v=7" />
+  <link rel="stylesheet" href="/coaching-page.css?v=10" />
   <link rel="icon" type="image/png" href="/images/Elvyn new logo.PNG" />
 </head>
 
@@ -69,7 +69,7 @@
           </div>
         </div>
         <div class="pc-cta">
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLScJeLa5t7cGdFWH3B0HwYWACrOmQlXnPw1OoJ2KQAgLt79G-Q/viewform" class="btn btn-primary">
+          <a href="#apply" class="btn btn-primary">
             Start the application
           </a>
         </div>
@@ -150,7 +150,7 @@
         </div>
 
         <div class="pc-cta">
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLScJeLa5t7cGdFWH3B0HwYWACrOmQlXnPw1OoJ2KQAgLt79G-Q/viewform" class="btn btn-primary">
+          <a href="#apply" class="btn btn-primary">
             Start the application
           </a>
         </div>
@@ -250,7 +250,7 @@
             </div>
             <div>
               <dt>Open spots</dt>
-              <dd>Three clients at a time</dd>
+              <dd>five clients at a time</dd>
             </div>
             <div>
               <dt>Rate after case studies</dt>
@@ -267,21 +267,160 @@
       </div>
     </section>
 
-    <!-- ===== 11. Apply ===== -->
-    <section class="pc-section pc-apply">
+    <!-- ===== 11. Apply (Web3Forms, submitted with fetch in the script at the bottom) ===== -->
+    <section class="pc-section pc-apply" id="apply" aria-labelledby="apply-heading">
       <div class="pc-container">
-        <p class="pc-eyebrow">Apply</p>
-        <h2 class="pc-h2">If this is the one thing left, apply.</h2>
-
-        <div>
-          <a href="https://docs.google.com/forms/d/e/1FAIpQLScJeLa5t7cGdFWH3B0HwYWACrOmQlXnPw1OoJ2KQAgLt79G-Q/viewform" class="btn btn-primary">
-            Start the application
-          </a>
+        <div class="pc-progress" role="progressbar" aria-label="Application progress"
+             aria-valuemin="0" aria-valuemax="15" aria-valuenow="1" aria-valuetext="Question 1 of 15">
+          <span class="pc-progress-fill"></span>
         </div>
 
-        <p class="pc-quiet pc-measure">
-          Applications are read individually. Only fits get a reply.
+        <h2 class="pc-h2" id="apply-heading" tabindex="-1">Apply</h2>
+        <p class="pc-body pc-apply-lead">
+          I take five people at a time. I read every application myself and I'll only reach out
+          if I think I can actually help.
         </p>
+
+        <form id="apply-form" class="pc-form" novalidate>
+          <!-- Honeypot for bots. Real people never see or fill this. -->
+          <input type="checkbox" name="botcheck" class="pc-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
+
+          <fieldset class="pc-step" data-required aria-describedby="q-last-date-err">
+            <legend class="pc-q"><span class="pc-step-count">1 / 15</span>When was your last first date?<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></legend>
+            <div class="pc-choices">
+              <label class="pc-choice"><input type="radio" name="Last first date" value="This month" /> This month</label>
+              <label class="pc-choice"><input type="radio" name="Last first date" value="Last few months" /> Last few months</label>
+              <label class="pc-choice"><input type="radio" name="Last first date" value="This year" /> This year</label>
+              <label class="pc-choice"><input type="radio" name="Last first date" value="Over a year ago" /> Over a year ago</label>
+              <label class="pc-choice"><input type="radio" name="Last first date" value="Can't remember" /> Can't remember</label>
+            </div>
+            <p class="pc-field-error" id="q-last-date-err" hidden></p>
+          </fieldset>
+
+          <fieldset class="pc-step" hidden data-required>
+            <p class="pc-step-count">2 / 15</p>
+            <label class="pc-q" for="q-situation">Walk me through the last time a date or a conversation went nowhere. What actually happened?<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></label>
+            <textarea id="q-situation" name="Last date or conversation that went nowhere" class="pc-input" rows="4" aria-describedby="q-situation-err"></textarea>
+            <p class="pc-field-error" id="q-situation-err" hidden></p>
+          </fieldset>
+
+          <fieldset class="pc-step" hidden>
+            <p class="pc-step-count">3 / 15</p>
+            <label class="pc-q" for="q-how-long">How long has it been like this? <span class="pc-optional">Optional</span></label>
+            <input type="text" id="q-how-long" name="How long it's been like this" class="pc-input" aria-describedby="q-how-long-err" />
+            <p class="pc-field-error" id="q-how-long-err" hidden></p>
+          </fieldset>
+
+          <fieldset class="pc-step" hidden data-required>
+            <p class="pc-step-count">4 / 15</p>
+            <label class="pc-q" for="q-first-name">First name<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></label>
+            <input type="text" id="q-first-name" name="First name" class="pc-input" autocomplete="given-name" aria-describedby="q-first-name-err" />
+            <p class="pc-field-error" id="q-first-name-err" hidden></p>
+          </fieldset>
+
+          <fieldset class="pc-step" hidden data-required>
+            <p class="pc-step-count">5 / 15</p>
+            <label class="pc-q" for="q-age">Age<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></label>
+            <input type="number" id="q-age" name="Age" class="pc-input pc-input-short" inputmode="numeric" min="18" max="99" step="1" aria-describedby="q-age-err" />
+            <p class="pc-field-error" id="q-age-err" hidden></p>
+          </fieldset>
+
+          <fieldset class="pc-step" hidden data-required>
+            <p class="pc-step-count">6 / 15</p>
+            <label class="pc-q" for="q-instagram">Instagram handle<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></label>
+            <input type="text" id="q-instagram" name="Instagram" class="pc-input" placeholder="@yourhandle"
+                   autocapitalize="off" autocorrect="off" spellcheck="false" aria-describedby="q-instagram-err" />
+            <p class="pc-field-error" id="q-instagram-err" hidden></p>
+          </fieldset>
+
+          <fieldset class="pc-step" hidden data-required>
+            <p class="pc-step-count">7 / 15</p>
+            <label class="pc-q" for="q-email">Email<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></label>
+            <input type="email" id="q-email" name="email" class="pc-input" autocomplete="email" inputmode="email"
+                   autocapitalize="off" spellcheck="false" aria-describedby="q-email-err" />
+            <p class="pc-field-error" id="q-email-err" hidden></p>
+          </fieldset>
+
+          <fieldset class="pc-step" hidden>
+            <p class="pc-step-count">8 / 15</p>
+            <label class="pc-q" for="q-current">Are you currently dating anyone, talking to anyone, or coming out of something? <span class="pc-optional">Optional</span></label>
+            <textarea id="q-current" name="Currently dating, talking to, or coming out of" class="pc-input" rows="4" aria-describedby="q-current-err"></textarea>
+            <p class="pc-field-error" id="q-current-err" hidden></p>
+          </fieldset>
+
+          <fieldset class="pc-step" hidden data-required>
+            <p class="pc-step-count">9 / 15</p>
+            <label class="pc-q" for="q-tried">What have you already tried to fix this?<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></label>
+            <textarea id="q-tried" name="Already tried" class="pc-input" rows="4" aria-describedby="q-tried-err"></textarea>
+            <p class="pc-field-error" id="q-tried-err" hidden></p>
+          </fieldset>
+
+          <fieldset class="pc-step" hidden data-required>
+            <p class="pc-step-count">10 / 15</p>
+            <label class="pc-q" for="q-problem">What do you think the actual problem is?<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></label>
+            <textarea id="q-problem" name="What they think the problem is" class="pc-input" rows="4" aria-describedby="q-problem-err"></textarea>
+            <p class="pc-field-error" id="q-problem-err" hidden></p>
+          </fieldset>
+
+          <fieldset class="pc-step" hidden data-required>
+            <p class="pc-step-count">11 / 15</p>
+            <label class="pc-q" for="q-four-weeks">What would have to be different in four weeks for this to be worth it to you?<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></label>
+            <textarea id="q-four-weeks" name="What would make four weeks worth it" class="pc-input" rows="4" aria-describedby="q-four-weeks-err"></textarea>
+            <p class="pc-field-error" id="q-four-weeks-err" hidden></p>
+          </fieldset>
+
+          <fieldset class="pc-step" hidden>
+            <p class="pc-step-count">12 / 15</p>
+            <label class="pc-q" for="q-time">This is four calls over four weeks plus work in between. How much time can you actually put in each week? <span class="pc-optional">Optional</span></label>
+            <input type="text" id="q-time" name="Time per week" class="pc-input" aria-describedby="q-time-err" />
+            <p class="pc-field-error" id="q-time-err" hidden></p>
+          </fieldset>
+
+          <fieldset class="pc-step" hidden data-required>
+            <p class="pc-step-count">13 / 15</p>
+            <label class="pc-q" for="q-why-you">I take five people at a time. Why should one of them be you?<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></label>
+            <textarea id="q-why-you" name="Why it should be them" class="pc-input" rows="4" aria-describedby="q-why-you-err"></textarea>
+            <p class="pc-field-error" id="q-why-you-err" hidden></p>
+          </fieldset>
+
+          <fieldset class="pc-step" hidden data-required aria-describedby="q-ready-err">
+            <legend class="pc-q"><span class="pc-step-count">14 / 15</span>It's $500 upfront. Are you ready to do that?<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></legend>
+            <div class="pc-choices">
+              <label class="pc-choice"><input type="radio" name="Ready to pay $500 upfront" value="Yes" /> Yes</label>
+              <label class="pc-choice"><input type="radio" name="Ready to pay $500 upfront" value="Need to think about it" /> Need to think about it</label>
+            </div>
+            <p class="pc-field-error" id="q-ready-err" hidden></p>
+          </fieldset>
+
+          <fieldset class="pc-step" hidden>
+            <p class="pc-step-count">15 / 15</p>
+            <label class="pc-q" for="q-else">Anything else I should know? <span class="pc-optional">Optional</span></label>
+            <textarea id="q-else" name="Anything else" class="pc-input" rows="4" aria-describedby="q-else-err"></textarea>
+            <p class="pc-field-error" id="q-else-err" hidden></p>
+          </fieldset>
+
+          <p class="pc-submit-error" role="alert" hidden></p>
+
+          <div class="pc-form-nav">
+            <button type="button" class="btn btn-ghost pc-back" hidden>Back</button>
+            <button type="submit" class="btn btn-primary pc-next">Next</button>
+            <span class="pc-enter-hint" aria-hidden="true">or press Enter &crarr;</span>
+          </div>
+        </form>
+
+        <div class="pc-confirm" tabindex="-1" hidden>
+          <p class="pc-confirm-main">
+            Got it. I read these myself, so give me a day or two. If it's a fit I'll reach out on
+            Instagram. If it's not, I'll tell you that too.
+          </p>
+          <p class="pc-confirm-aside">
+            While you wait, the community is free. Start with the three videos in The Energy Problem.
+          </p>
+          <a href="https://www.skool.com/elvyn-dating-lab-2700" class="btn btn-ghost pc-confirm-btn"
+             target="_blank" rel="noopener">
+            Join the community
+          </a>
+        </div>
       </div>
     </section>
 
@@ -351,6 +490,190 @@
       // Close when clicking the backdrop
       modal.addEventListener("click", function (e) { if (e.target === modal) modal.close(); });
     });
+
+    // Apply buttons scroll to the form (instantly if reduced motion is on)
+    var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+    document.querySelectorAll('a[href="#apply"]').forEach(function (link) {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+        document.getElementById("apply").scrollIntoView({
+          behavior: reduceMotion.matches ? "auto" : "smooth",
+          block: "start"
+        });
+        // Move keyboard focus to the form without a second scroll
+        document.getElementById("apply-heading").focus({ preventScroll: true });
+      });
+    });
+
+    // Application form: one question at a time, sent to Web3Forms with fetch
+    (function () {
+      var ACCESS_KEY = "148271e7-d8e6-4de9-b619-189de94cdc49";
+      var form = document.getElementById("apply-form");
+      var steps = Array.prototype.slice.call(form.querySelectorAll(".pc-step"));
+      var backBtn = form.querySelector(".pc-back");
+      var nextBtn = form.querySelector(".pc-next");
+      var submitError = form.querySelector(".pc-submit-error");
+      var progress = document.querySelector(".pc-progress");
+      var progressFill = progress.querySelector(".pc-progress-fill");
+      var confirmBox = document.querySelector(".pc-confirm");
+      var current = 0;
+
+      function isLast() { return current === steps.length - 1; }
+
+      function setProgress(n, text) {
+        progressFill.style.width = (n / steps.length) * 100 + "%";
+        progress.setAttribute("aria-valuenow", n);
+        progress.setAttribute("aria-valuetext", text || "Question " + n + " of " + steps.length);
+      }
+
+      function focusStep(step) {
+        var target = step.querySelector("input:checked") || step.querySelector("input, textarea");
+        target.focus();
+      }
+
+      function showStep(i, focus) {
+        steps[current].hidden = true;
+        current = i;
+        steps[i].hidden = false;
+        backBtn.hidden = i === 0;
+        nextBtn.textContent = isLast() ? "Submit application" : "Next";
+        submitError.hidden = true;
+        setProgress(i + 1);
+        if (focus) focusStep(steps[i]);
+      }
+
+      function setError(step, message) {
+        var errorEl = step.querySelector(".pc-field-error");
+        var field = step.querySelector(".pc-input");
+        errorEl.textContent = message;
+        errorEl.hidden = !message;
+        errorEl.setAttribute("role", "alert");
+        step.classList.toggle("is-invalid", !!message);
+        if (field) {
+          if (message) field.setAttribute("aria-invalid", "true");
+          else field.removeAttribute("aria-invalid");
+        }
+      }
+
+      function validate(step) {
+        var required = step.hasAttribute("data-required");
+        var message = "";
+
+        if (step.querySelector('input[type="radio"]')) {
+          if (required && !step.querySelector("input:checked")) message = "Pick one to continue.";
+        } else {
+          var field = step.querySelector(".pc-input");
+          var value = field.value.trim();
+          if (field.type === "number" && field.validity.badInput) {
+            message = "Enter your age as a number.";
+          } else if (required && !value) {
+            message = "This one is required.";
+          } else if (field.type === "email" && field.validity.typeMismatch) {
+            message = "That doesn't look like a valid email.";
+          } else if (field.type === "number" && value) {
+            var age = Number(value);
+            if (!Number.isInteger(age) || age < 18 || age > 99) message = "Enter your age as a whole number, 18 or older.";
+          }
+        }
+
+        setError(step, message);
+        return !message;
+      }
+
+      // Every question in order, with blanks marked, so the email reads cleanly
+      function buildPayload() {
+        var name = form.elements["First name"].value.trim();
+        var payload = {
+          access_key: ACCESS_KEY,
+          subject: "New coaching application" + (name ? " from " + name : ""),
+          from_name: "ELVYN coaching page",
+          botcheck: form.elements.botcheck.checked
+        };
+        steps.forEach(function (step) {
+          var checked = step.querySelector("input:checked");
+          var field = checked || step.querySelector("input, textarea");
+          var value = checked ? checked.value : (field.type === "radio" ? "" : field.value.trim());
+          payload[field.name] = value || "(left blank)";
+        });
+        return payload;
+      }
+
+      function send() {
+        nextBtn.disabled = true;
+        backBtn.disabled = true;
+        nextBtn.textContent = "Sending\u2026";
+        submitError.hidden = true;
+
+        fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify(buildPayload())
+        })
+          .then(function (res) {
+            return res.json().then(function (json) {
+              if (!res.ok || !json.success) throw new Error(json.message || "Request failed");
+            });
+          })
+          .then(function () {
+            form.hidden = true;
+            confirmBox.hidden = false;
+            setProgress(steps.length, "Application sent");
+            // The form may have been tall, so bring the confirmation into view
+            confirmBox.focus({ preventScroll: true });
+            confirmBox.scrollIntoView({
+              behavior: reduceMotion.matches ? "auto" : "smooth",
+              block: "center"
+            });
+          })
+          .catch(function () {
+            // Answers stay in the form so they can retry
+            submitError.textContent = "That didn't go through. Your answers are still here, so try again. " +
+              "If it keeps failing, email me at seanbookerjr@elvynlabs.com.";
+            submitError.hidden = false;
+          })
+          .finally(function () {
+            nextBtn.disabled = false;
+            backBtn.disabled = false;
+            nextBtn.textContent = "Submit application";
+            // Disabling the button drops focus; put it back so Enter retries
+            if (!form.hidden && document.activeElement === document.body) nextBtn.focus();
+          });
+      }
+
+      // Next and Enter both come through here (Enter in a text field submits the form)
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        var step = steps[current];
+        if (!validate(step)) {
+          focusStep(step);
+          return;
+        }
+        if (isLast()) send();
+        else showStep(current + 1, true);
+      });
+
+      form.addEventListener("keydown", function (e) {
+        if (e.key !== "Enter" || e.isComposing) return;
+        var t = e.target;
+        // Enter on a choice advances; in long answers it's a new line, and Cmd/Ctrl+Enter advances
+        if (t.type === "radio" || (t.tagName === "TEXTAREA" && (e.metaKey || e.ctrlKey))) {
+          e.preventDefault();
+          form.requestSubmit();
+        }
+      });
+
+      // Clear a question's error as soon as they change the answer
+      form.addEventListener("input", function (e) {
+        var step = e.target.closest(".pc-step");
+        if (step && step.classList.contains("is-invalid")) setError(step, "");
+      });
+
+      backBtn.addEventListener("click", function () {
+        if (current > 0) showStep(current - 1, true);
+      });
+
+      showStep(0, false);
+    })();
   </script>
 
 </body>
