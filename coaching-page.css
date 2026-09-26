@@ -20,18 +20,6 @@ iframe:focus-visible {
   border-radius: 4px;
 }
 
-/* ===== Brand mark ===== */
-.pc-brand {
-  padding-top: 1.5rem;
-}
-
-.pc-brand-logo {
-  display: block;
-  width: 40px;
-  height: 40px;
-  object-fit: contain;
-}
-
 /* ===== Layout ===== */
 .pc-main {
   padding: 0 0 1rem;
@@ -56,11 +44,6 @@ iframe:focus-visible {
 .pc-container > .pc-places,
 .pc-container > .pc-split {
   max-width: none;
-}
-
-/* Logo stays pinned to the top left, outside the centered column. */
-.pc-brand .pc-brand-logo {
-  margin-left: 0;
 }
 
 .pc-measure {
