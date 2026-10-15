@@ -20,7 +20,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="/styles.css?v=2" />
-  <link rel="stylesheet" href="/coaching-page.css?v=10" />
+  <link rel="stylesheet" href="/coaching-page.css?v=11" />
   <link rel="icon" type="image/png" href="/images/Elvyn new logo.PNG" />
 </head>
 
@@ -78,6 +78,7 @@
           <a href="#apply" class="btn btn-primary">
             Start the application
           </a>
+          <p class="pc-cta-alt">Date this week? <a href="#pre-date-call">Book a Pre-Date Call instead.</a></p>
         </div>
       </div>
     </section>
@@ -103,7 +104,7 @@
     <section class="pc-section">
       <div class="pc-container">
         <p class="pc-eyebrow">What is actually going on</p>
-        <h2 class="pc-h2">You think shes above you.</h2>
+        <h2 class="pc-h2">You think she's above you.</h2>
 
         <ul class="pc-places">
           <li class="pc-place">
@@ -325,10 +326,11 @@
           </fieldset>
 
           <fieldset class="pc-step" hidden data-required aria-describedby="q-ready-err">
-            <legend class="pc-q"><span class="pc-step-count">14 / 15</span>It's $500 upfront. Are you ready to do that?<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></legend>
+            <legend class="pc-q"><span class="pc-step-count">14 / 15</span>It's $500 upfront. If it's a fit, when can you start?<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></legend>
             <div class="pc-choices">
-              <label class="pc-choice"><input type="radio" name="Ready to pay $500 upfront" value="Yes" /> Yes</label>
-              <label class="pc-choice"><input type="radio" name="Ready to pay $500 upfront" value="Need to think about it" /> Need to think about it</label>
+              <label class="pc-choice"><input type="radio" name="When they can start ($500 upfront)" value="This week" /> This week</label>
+              <label class="pc-choice"><input type="radio" name="When they can start ($500 upfront)" value="In 2-4 weeks" /> In 2-4 weeks</label>
+              <label class="pc-choice"><input type="radio" name="When they can start ($500 upfront)" value="Not right now" /> Not right now</label>
             </div>
             <p class="pc-field-error" id="q-ready-err" hidden></p>
           </fieldset>
@@ -349,7 +351,21 @@
           </div>
         </form>
 
-        <div class="pc-confirm" tabindex="-1" hidden>
+        <div class="pc-confirm pc-confirm-later" tabindex="-1" hidden>
+          <p class="pc-confirm-main">
+            Got it. If the timing isn't right for the four weeks, the Pre-Date Call is the move.
+            One call to plan your next date start to finish.
+          </p>
+          <p class="pc-confirm-aside">
+            $100, credited toward the program if you start within 30 days.
+          </p>
+          <a href="https://buy.stripe.com/5kQ4gyfN87ZO8GT8jpbQY0b" class="btn btn-primary pc-confirm-btn"
+             target="_blank" rel="noopener">
+            Book a Pre-Date Call
+          </a>
+        </div>
+
+        <div class="pc-confirm pc-confirm-default" tabindex="-1" hidden>
           <p class="pc-confirm-main">
             Got it. I read these myself, so give me a day or two. If it's a fit I'll reach out on
             Instagram. If it's not, I'll tell you that too.
@@ -360,6 +376,27 @@
           <a href="https://www.skool.com/elvyn-dating-lab-2700" class="btn btn-ghost pc-confirm-btn"
              target="_blank" rel="noopener">
             Join the community
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Pre-Date Call ===== -->
+    <section class="pc-section pc-predate" id="pre-date-call">
+      <div class="pc-container">
+        <p class="pc-eyebrow">Pre-Date Call</p>
+        <h2 class="pc-h2">Have a date coming up?</h2>
+        <p class="pc-body">
+          One call to plan it start to finish. Where to go, what to text before and after, and exactly
+          when and how to make your move so you're not stuck waiting for the right moment.
+        </p>
+        <p class="pc-body">
+          $100, credited toward the four weeks if you start within 30 days. Limited calls per week.
+        </p>
+
+        <div class="pc-cta">
+          <a href="https://buy.stripe.com/5kQ4gyfN87ZO8GT8jpbQY0b" class="btn btn-primary" target="_blank" rel="noopener">
+            Book a Pre-Date Call
           </a>
         </div>
       </div>
@@ -456,7 +493,8 @@
       var submitError = form.querySelector(".pc-submit-error");
       var progress = document.querySelector(".pc-progress");
       var progressFill = progress.querySelector(".pc-progress-fill");
-      var confirmBox = document.querySelector(".pc-confirm");
+      var confirmBox = document.querySelector(".pc-confirm-default");
+      var confirmLater = document.querySelector(".pc-confirm-later");
       var current = 0;
 
       function isLast() { return current === steps.length - 1; }
@@ -557,6 +595,9 @@
           })
           .then(function () {
             form.hidden = true;
+            // "Not right now" applicants get pointed to the Pre-Date Call instead
+            var start = form.querySelector('input[name="When they can start ($500 upfront)"]:checked');
+            if (start && start.value === "Not right now") confirmBox = confirmLater;
             confirmBox.hidden = false;
             setProgress(steps.length, "Application sent");
             // The form may have been tall, so bring the confirmation into view
