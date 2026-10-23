@@ -832,20 +832,3 @@ textarea.pc-input {
     transform: none;
   }
 }
-
-/* ===== Pre-Date Call link under the hero button ===== */
-.pc-cta-alt {
-  margin-top: 0.9rem;
-  font-size: 0.95rem;
-  color: #9ca3af;
-}
-
-.pc-cta-alt a {
-  color: #e5e7eb;
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.pc-cta-alt a:hover {
-  color: #f9fafb;
-}
