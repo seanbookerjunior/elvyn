@@ -2,12 +2,12 @@
 <html lang="en">
 <head>
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2S3S47GCPT"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-2QGV140SQK"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-2S3S47GCPT');
+    gtag('config', 'G-2QGV140SQK');
   </script>
 
   <meta charset="UTF-8" />
@@ -513,6 +513,8 @@
             });
           })
           .then(function () {
+            // Count the application as a lead in Google Analytics
+            if (typeof gtag === "function") gtag("event", "generate_lead", { form: "coaching_application" });
             form.hidden = true;
             // "Not right now" applicants get pointed to the Pre-Date Call instead
             var start = form.querySelector('input[name="When they can start ($500 upfront)"]:checked');
