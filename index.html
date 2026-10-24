@@ -82,23 +82,6 @@
       </div>
     </section>
 
-    <!-- ===== 3. Who this is for ===== -->
-    <section class="pc-section">
-      <div class="pc-container">
-        <p class="pc-eyebrow">Who this is for</p>
-        <h2 class="pc-h2">6 things that are probably true about you.</h2>
-
-        <ul class="pc-list">
-          <li>Your career and your life are handled. Dating is the one part that isn't.</li>
-          <li>Your dates end with her saying "I'm not feeling a spark with you".</li>
-          <li>You get the Hinge/Tinder match but getting her out and keeping her interested feels impossible.</li>
-          <li>You're done chasing women who give you nothing back.</li>
-          <li>You want to approach women, but hesitate and talk yourself out of it  every single time.</li>
-          <li>You want more options and more dates, not one long shot you keep waiting on.</li>
-        </ul>
-      </div>
-    </section>
-
     <!-- ===== 4. What's actually going on ===== -->
     <section class="pc-section">
       <div class="pc-container">
@@ -123,38 +106,6 @@
             <p>There is an opening and you let it pass, then replay it the entire drive home.</p>
           </li>
         </ul>
-      </div>
-    </section>
-
-    <!-- ===== 5. My story (PLACEHOLDER: Sean writes this) ===== -->
-    <section class="pc-section">
-      <div class="pc-container">
-        <p class="pc-h2">My story</p>
-        <div class="pc-placeholder">
-       <p>I thought the problem was not having enough. So I fixed that. Got in shape, built a career, bought the things that were supposed to matter. Still couldn't find dates, and when I did, they went nowhere.
-        None of it was the problem. Women will tell you they want the job, the height, the look. Truth is, they don't know what they want until it's standing in front of them.</p>
-          <br>
-        <p>It's energy and tension.
-          Took me five years to build it. Two more teaching other men. I do this for the guys who never get a chance, because for a long time, neither did I.
-        </p>
-        <div class="pc-story-photo">
-          <button type="button" class="pc-zoom" data-zoom="testimonials-modal" aria-label="Enlarge messages from viewers">
-            <img src="/images/testimonials.png" alt="Screenshots of messages from viewers thanking Sean for his advice" loading="lazy" width="1400" height="790" />
-          </button>
-          <p class="pc-quiet pc-zoom-hint">Click to enlarge</p>
-        </div>
-
-        <dialog id="testimonials-modal" class="pc-modal" aria-label="Messages from viewers">
-          <button type="button" class="pc-modal-close" aria-label="Close">&times;</button>
-          <img src="/images/testimonials.png" alt="Screenshots of messages from viewers thanking Sean for his advice" width="1400" height="790" />
-        </dialog>
-        </div>
-
-        <div class="pc-cta">
-          <a href="#apply" class="btn btn-primary">
-            Start the application
-          </a>
-        </div>
       </div>
     </section>
 
@@ -208,18 +159,37 @@
       </div>
     </section>
 
+    <!-- ===== Proof (viewer messages) ===== -->
+    <section class="pc-section">
+      <div class="pc-container">
+        <p class="pc-eyebrow">From viewers</p>
+        <h2 class="pc-h2">What guys tell me.</h2>
+        <div class="pc-story-photo">
+          <button type="button" class="pc-zoom" data-zoom="testimonials-modal" aria-label="Enlarge messages from viewers">
+            <img src="/images/testimonials.png" alt="Screenshots of messages from viewers thanking Sean for his advice" loading="lazy" width="1400" height="790" />
+          </button>
+          <p class="pc-quiet pc-zoom-hint">Click to enlarge</p>
+        </div>
+
+        <dialog id="testimonials-modal" class="pc-modal" aria-label="Messages from viewers">
+          <button type="button" class="pc-modal-close" aria-label="Close">&times;</button>
+          <img src="/images/testimonials.png" alt="Screenshots of messages from viewers thanking Sean for his advice" width="1400" height="790" />
+        </dialog>
+      </div>
+    </section>
+
     <!-- ===== 11. Apply (Web3Forms, submitted with fetch in the script at the bottom) ===== -->
     <section class="pc-section pc-apply" id="apply" aria-labelledby="apply-heading">
       <div class="pc-container">
         <div class="pc-progress" role="progressbar" aria-label="Application progress"
-             aria-valuemin="0" aria-valuemax="15" aria-valuenow="1" aria-valuetext="Question 1 of 15">
+             aria-valuemin="0" aria-valuemax="8" aria-valuenow="1" aria-valuetext="Question 1 of 8">
           <span class="pc-progress-fill"></span>
         </div>
 
         <h2 class="pc-h2" id="apply-heading" tabindex="-1">Apply</h2>
         <p class="pc-body pc-apply-lead">
-          I take five people at a time. I read every application myself and I'll only reach out
-          if I think I can actually help.
+          Four weeks, one on one. <strong>$500 upfront.</strong> I take five people at a time.
+          I read every application myself and I'll only reach out if I think I can actually help.
         </p>
 
         <form id="apply-form" class="pc-form" novalidate>
@@ -227,7 +197,7 @@
           <input type="checkbox" name="botcheck" class="pc-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
           <fieldset class="pc-step" data-required aria-describedby="q-last-date-err">
-            <legend class="pc-q"><span class="pc-step-count">1 / 15</span>When was your last first date?<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></legend>
+            <legend class="pc-q"><span class="pc-step-count">1 / 8</span>When was your last first date?<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></legend>
             <div class="pc-choices">
               <label class="pc-choice"><input type="radio" name="Last first date" value="This month" /> This month</label>
               <label class="pc-choice"><input type="radio" name="Last first date" value="Last few months" /> Last few months</label>
@@ -239,93 +209,21 @@
           </fieldset>
 
           <fieldset class="pc-step" hidden data-required>
-            <p class="pc-step-count">2 / 15</p>
+            <p class="pc-step-count">2 / 8</p>
             <label class="pc-q" for="q-situation">Walk me through the last time a date or a conversation went nowhere. What actually happened?<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></label>
             <textarea id="q-situation" name="Last date or conversation that went nowhere" class="pc-input" rows="4" aria-describedby="q-situation-err"></textarea>
             <p class="pc-field-error" id="q-situation-err" hidden></p>
           </fieldset>
 
-          <fieldset class="pc-step" hidden>
-            <p class="pc-step-count">3 / 15</p>
-            <label class="pc-q" for="q-how-long">How long has it been like this? <span class="pc-optional">Optional</span></label>
-            <input type="text" id="q-how-long" name="How long it's been like this" class="pc-input" aria-describedby="q-how-long-err" />
-            <p class="pc-field-error" id="q-how-long-err" hidden></p>
-          </fieldset>
-
           <fieldset class="pc-step" hidden data-required>
-            <p class="pc-step-count">4 / 15</p>
-            <label class="pc-q" for="q-first-name">First name<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></label>
-            <input type="text" id="q-first-name" name="First name" class="pc-input" autocomplete="given-name" aria-describedby="q-first-name-err" />
-            <p class="pc-field-error" id="q-first-name-err" hidden></p>
-          </fieldset>
-
-          <fieldset class="pc-step" hidden data-required>
-            <p class="pc-step-count">5 / 15</p>
-            <label class="pc-q" for="q-age">Age<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></label>
-            <input type="number" id="q-age" name="Age" class="pc-input pc-input-short" inputmode="numeric" min="18" max="99" step="1" aria-describedby="q-age-err" />
-            <p class="pc-field-error" id="q-age-err" hidden></p>
-          </fieldset>
-
-          <fieldset class="pc-step" hidden data-required>
-            <p class="pc-step-count">6 / 15</p>
-            <label class="pc-q" for="q-instagram">Instagram handle<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></label>
-            <input type="text" id="q-instagram" name="Instagram" class="pc-input" placeholder="@yourhandle"
-                   autocapitalize="off" autocorrect="off" spellcheck="false" aria-describedby="q-instagram-err" />
-            <p class="pc-field-error" id="q-instagram-err" hidden></p>
-          </fieldset>
-
-          <fieldset class="pc-step" hidden data-required>
-            <p class="pc-step-count">7 / 15</p>
-            <label class="pc-q" for="q-email">Email<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></label>
-            <input type="email" id="q-email" name="email" class="pc-input" autocomplete="email" inputmode="email"
-                   autocapitalize="off" spellcheck="false" aria-describedby="q-email-err" />
-            <p class="pc-field-error" id="q-email-err" hidden></p>
-          </fieldset>
-
-          <fieldset class="pc-step" hidden>
-            <p class="pc-step-count">8 / 15</p>
-            <label class="pc-q" for="q-current">Are you currently dating anyone, talking to anyone, or coming out of something? <span class="pc-optional">Optional</span></label>
-            <textarea id="q-current" name="Currently dating, talking to, or coming out of" class="pc-input" rows="4" aria-describedby="q-current-err"></textarea>
-            <p class="pc-field-error" id="q-current-err" hidden></p>
-          </fieldset>
-
-          <fieldset class="pc-step" hidden data-required>
-            <p class="pc-step-count">9 / 15</p>
-            <label class="pc-q" for="q-tried">What have you already tried to fix this?<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></label>
-            <textarea id="q-tried" name="Already tried" class="pc-input" rows="4" aria-describedby="q-tried-err"></textarea>
-            <p class="pc-field-error" id="q-tried-err" hidden></p>
-          </fieldset>
-
-          <fieldset class="pc-step" hidden data-required>
-            <p class="pc-step-count">10 / 15</p>
-            <label class="pc-q" for="q-problem">What do you think the actual problem is?<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></label>
-            <textarea id="q-problem" name="What they think the problem is" class="pc-input" rows="4" aria-describedby="q-problem-err"></textarea>
-            <p class="pc-field-error" id="q-problem-err" hidden></p>
-          </fieldset>
-
-          <fieldset class="pc-step" hidden data-required>
-            <p class="pc-step-count">11 / 15</p>
+            <p class="pc-step-count">3 / 8</p>
             <label class="pc-q" for="q-four-weeks">What would have to be different in four weeks for this to be worth it to you?<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></label>
             <textarea id="q-four-weeks" name="What would make four weeks worth it" class="pc-input" rows="4" aria-describedby="q-four-weeks-err"></textarea>
             <p class="pc-field-error" id="q-four-weeks-err" hidden></p>
           </fieldset>
 
-          <fieldset class="pc-step" hidden>
-            <p class="pc-step-count">12 / 15</p>
-            <label class="pc-q" for="q-time">This is four calls over four weeks plus work in between. How much time can you actually put in each week? <span class="pc-optional">Optional</span></label>
-            <input type="text" id="q-time" name="Time per week" class="pc-input" aria-describedby="q-time-err" />
-            <p class="pc-field-error" id="q-time-err" hidden></p>
-          </fieldset>
-
-          <fieldset class="pc-step" hidden data-required>
-            <p class="pc-step-count">13 / 15</p>
-            <label class="pc-q" for="q-why-you">I take five people at a time. Why should one of them be you?<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></label>
-            <textarea id="q-why-you" name="Why it should be them" class="pc-input" rows="4" aria-describedby="q-why-you-err"></textarea>
-            <p class="pc-field-error" id="q-why-you-err" hidden></p>
-          </fieldset>
-
           <fieldset class="pc-step" hidden data-required aria-describedby="q-ready-err">
-            <legend class="pc-q"><span class="pc-step-count">14 / 15</span>It's $500 upfront. If it's a fit, when can you start?<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></legend>
+            <legend class="pc-q"><span class="pc-step-count">4 / 8</span>It's $500 upfront. If it's a fit, when can you start?<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></legend>
             <div class="pc-choices">
               <label class="pc-choice"><input type="radio" name="When they can start ($500 upfront)" value="This week" /> This week</label>
               <label class="pc-choice"><input type="radio" name="When they can start ($500 upfront)" value="In 2-4 weeks" /> In 2-4 weeks</label>
@@ -334,11 +232,34 @@
             <p class="pc-field-error" id="q-ready-err" hidden></p>
           </fieldset>
 
-          <fieldset class="pc-step" hidden>
-            <p class="pc-step-count">15 / 15</p>
-            <label class="pc-q" for="q-else">Anything else I should know? <span class="pc-optional">Optional</span></label>
-            <textarea id="q-else" name="Anything else" class="pc-input" rows="4" aria-describedby="q-else-err"></textarea>
-            <p class="pc-field-error" id="q-else-err" hidden></p>
+          <fieldset class="pc-step" hidden data-required>
+            <p class="pc-step-count">5 / 8</p>
+            <label class="pc-q" for="q-first-name">First name<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></label>
+            <input type="text" id="q-first-name" name="First name" class="pc-input" autocomplete="given-name" aria-describedby="q-first-name-err" />
+            <p class="pc-field-error" id="q-first-name-err" hidden></p>
+          </fieldset>
+
+          <fieldset class="pc-step" hidden data-required>
+            <p class="pc-step-count">6 / 8</p>
+            <label class="pc-q" for="q-age">Age<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></label>
+            <input type="number" id="q-age" name="Age" class="pc-input pc-input-short" inputmode="numeric" min="18" max="99" step="1" aria-describedby="q-age-err" />
+            <p class="pc-field-error" id="q-age-err" hidden></p>
+          </fieldset>
+
+          <fieldset class="pc-step" hidden data-required>
+            <p class="pc-step-count">7 / 8</p>
+            <label class="pc-q" for="q-instagram">Instagram handle<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></label>
+            <input type="text" id="q-instagram" name="Instagram" class="pc-input" placeholder="@yourhandle"
+                   autocapitalize="off" autocorrect="off" spellcheck="false" aria-describedby="q-instagram-err" />
+            <p class="pc-field-error" id="q-instagram-err" hidden></p>
+          </fieldset>
+
+          <fieldset class="pc-step" hidden data-required>
+            <p class="pc-step-count">8 / 8</p>
+            <label class="pc-q" for="q-email">Email<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></label>
+            <input type="email" id="q-email" name="email" class="pc-input" autocomplete="email" inputmode="email"
+                   autocapitalize="off" spellcheck="false" aria-describedby="q-email-err" />
+            <p class="pc-field-error" id="q-email-err" hidden></p>
           </fieldset>
 
           <p class="pc-submit-error" role="alert" hidden></p>
