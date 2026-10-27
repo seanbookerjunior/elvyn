@@ -115,9 +115,9 @@ iframe:focus-visible {
 .pc-hero-banner {
   display: block;
   width: 100%;
-  max-width: 460px;
+  max-width: 260px;
   height: auto;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
 }
 
 /* ===== Type ===== */
@@ -767,8 +767,8 @@ textarea.pc-input {
   }
 
   .pc-hero-banner {
-    max-width: 320px;
-    margin-bottom: 1.5rem;
+    max-width: 220px;
+    margin-bottom: 1rem;
   }
 
   .pc-h1 {
