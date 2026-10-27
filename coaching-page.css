@@ -117,6 +117,7 @@ iframe:focus-visible {
   width: 100%;
   max-width: 260px;
   height: auto;
+  margin-top: 1.5rem;
   margin-bottom: 1.5rem;
 }
 
@@ -768,6 +769,7 @@ textarea.pc-input {
 
   .pc-hero-banner {
     max-width: 220px;
+    margin-top: 1.75rem;
     margin-bottom: 1rem;
   }
 
