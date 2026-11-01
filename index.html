@@ -398,6 +398,16 @@
     // Application form: one question at a time, sent to Web3Forms with fetch
     (function () {
       var ACCESS_KEY = "148271e7-d8e6-4de9-b619-189de94cdc49";
+      // Google Apps Script web app: logs to the Applications tab and emails the applicant
+      var PIPELINE_URL = "";
+      function toPipeline(payload, stage) {
+        if (!PIPELINE_URL) return;
+        var data = {};
+        for (var k in payload) if (k !== "access_key" && k !== "botcheck" && payload[k] !== "(left blank)") data[k] = payload[k];
+        data.stage = stage;
+        fetch(PIPELINE_URL, { method: "POST", mode: "no-cors", headers: { "Content-Type": "text/plain" }, body: JSON.stringify(data) })
+          .catch(function () {});
+      }
       var form = document.getElementById("apply-form");
       var steps = Array.prototype.slice.call(form.querySelectorAll(".pc-step"));
       var backBtn = form.querySelector(".pc-back");
@@ -499,6 +509,7 @@
         var name = form.elements["First name"].value.trim();
         payload.subject = "Started an application (not finished yet)" + (name ? ": " + name : "");
         if (typeof gtag === "function") gtag("event", "application_contact_info");
+        toPipeline(payload, "started");
         fetch("https://api.web3forms.com/submit", {
           method: "POST",
           headers: { "Content-Type": "application/json", Accept: "application/json" },
@@ -525,6 +536,7 @@
           .then(function () {
             // Count the application as a lead in Google Analytics
             if (typeof gtag === "function") gtag("event", "generate_lead", { form: "coaching_application" });
+            if (!form.elements.botcheck.checked) toPipeline(buildPayload(), "finished");
             form.hidden = true;
             // "Not right now" applicants get pointed to the Pre-Date Call instead
             var start = form.querySelector('input[name="How soon they can commit"]:checked');
