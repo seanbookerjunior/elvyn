@@ -159,13 +159,13 @@
     <section class="pc-section pc-apply" id="apply" aria-labelledby="apply-heading">
       <div class="pc-container">
         <div class="pc-progress" role="progressbar" aria-label="Application progress"
-             aria-valuemin="0" aria-valuemax="8" aria-valuenow="1" aria-valuetext="Question 1 of 8">
+             aria-valuemin="0" aria-valuemax="7" aria-valuenow="1" aria-valuetext="Question 1 of 7">
           <span class="pc-progress-fill"></span>
         </div>
 
         <h2 class="pc-h2" id="apply-heading" tabindex="-1">Apply</h2>
         <p class="pc-body pc-apply-lead">
-          Four weeks, one on one. <strong>$500 upfront.</strong> I take five people at a time.
+          Four weeks, one on one. I take five people at a time.
           I read every application myself and I'll only reach out if I think I can actually help.
         </p>
 
@@ -173,58 +173,22 @@
           <!-- Honeypot for bots. Real people never see or fill this. -->
           <input type="checkbox" name="botcheck" class="pc-honeypot" tabindex="-1" autocomplete="off" aria-hidden="true" />
 
-          <fieldset class="pc-step" data-required aria-describedby="q-last-date-err">
-            <legend class="pc-q"><span class="pc-step-count">1 / 8</span>When was your last first date?<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></legend>
-            <div class="pc-choices">
-              <label class="pc-choice"><input type="radio" name="Last first date" value="This month" /> This month</label>
-              <label class="pc-choice"><input type="radio" name="Last first date" value="Last few months" /> Last few months</label>
-              <label class="pc-choice"><input type="radio" name="Last first date" value="This year" /> This year</label>
-              <label class="pc-choice"><input type="radio" name="Last first date" value="Over a year ago" /> Over a year ago</label>
-              <label class="pc-choice"><input type="radio" name="Last first date" value="Can't remember" /> Can't remember</label>
-            </div>
-            <p class="pc-field-error" id="q-last-date-err" hidden></p>
-          </fieldset>
-
-          <fieldset class="pc-step" hidden data-required>
-            <p class="pc-step-count">2 / 8</p>
-            <label class="pc-q" for="q-situation">Walk me through the last time a date or a conversation went nowhere. What actually happened?<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></label>
-            <textarea id="q-situation" name="Last date or conversation that went nowhere" class="pc-input" rows="4" aria-describedby="q-situation-err"></textarea>
-            <p class="pc-field-error" id="q-situation-err" hidden></p>
-          </fieldset>
-
-          <fieldset class="pc-step" hidden data-required>
-            <p class="pc-step-count">3 / 8</p>
-            <label class="pc-q" for="q-four-weeks">What would have to be different in four weeks for this to be worth it to you?<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></label>
-            <textarea id="q-four-weeks" name="What would make four weeks worth it" class="pc-input" rows="4" aria-describedby="q-four-weeks-err"></textarea>
-            <p class="pc-field-error" id="q-four-weeks-err" hidden></p>
-          </fieldset>
-
-          <fieldset class="pc-step" hidden data-required aria-describedby="q-ready-err">
-            <legend class="pc-q"><span class="pc-step-count">4 / 8</span>It's $500 upfront. If it's a fit, when can you start?<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></legend>
-            <div class="pc-choices">
-              <label class="pc-choice"><input type="radio" name="When they can start ($500 upfront)" value="This week" /> This week</label>
-              <label class="pc-choice"><input type="radio" name="When they can start ($500 upfront)" value="In 2-4 weeks" /> In 2-4 weeks</label>
-              <label class="pc-choice"><input type="radio" name="When they can start ($500 upfront)" value="Not right now" /> Not right now</label>
-            </div>
-            <p class="pc-field-error" id="q-ready-err" hidden></p>
-          </fieldset>
-
-          <fieldset class="pc-step" hidden data-required>
-            <p class="pc-step-count">5 / 8</p>
+          <fieldset class="pc-step" data-required>
+            <p class="pc-step-count">1 / 7</p>
             <label class="pc-q" for="q-first-name">First name<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></label>
             <input type="text" id="q-first-name" name="First name" class="pc-input" autocomplete="given-name" aria-describedby="q-first-name-err" />
             <p class="pc-field-error" id="q-first-name-err" hidden></p>
           </fieldset>
 
           <fieldset class="pc-step" hidden data-required>
-            <p class="pc-step-count">6 / 8</p>
+            <p class="pc-step-count">2 / 7</p>
             <label class="pc-q" for="q-age">Age<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></label>
             <input type="number" id="q-age" name="Age" class="pc-input pc-input-short" inputmode="numeric" min="18" max="99" step="1" aria-describedby="q-age-err" />
             <p class="pc-field-error" id="q-age-err" hidden></p>
           </fieldset>
 
           <fieldset class="pc-step" hidden data-required>
-            <p class="pc-step-count">7 / 8</p>
+            <p class="pc-step-count">3 / 7</p>
             <label class="pc-q" for="q-instagram">Instagram handle<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></label>
             <input type="text" id="q-instagram" name="Instagram" class="pc-input" placeholder="@yourhandle"
                    autocapitalize="off" autocorrect="off" spellcheck="false" aria-describedby="q-instagram-err" />
@@ -232,11 +196,39 @@
           </fieldset>
 
           <fieldset class="pc-step" hidden data-required>
-            <p class="pc-step-count">8 / 8</p>
+            <p class="pc-step-count">4 / 7</p>
             <label class="pc-q" for="q-email">Email<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></label>
             <input type="email" id="q-email" name="email" class="pc-input" autocomplete="email" inputmode="email"
                    autocapitalize="off" spellcheck="false" aria-describedby="q-email-err" />
             <p class="pc-field-error" id="q-email-err" hidden></p>
+          </fieldset>
+
+          <fieldset class="pc-step" hidden data-required>
+            <p class="pc-step-count">5 / 7</p>
+            <label class="pc-q" for="q-problem">What's the one thing you want fixed with women right now? Be specific.<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></label>
+            <textarea id="q-problem" name="What they want fixed" class="pc-input" rows="4" aria-describedby="q-problem-err"></textarea>
+            <p class="pc-field-error" id="q-problem-err" hidden></p>
+          </fieldset>
+
+          <fieldset class="pc-step" hidden data-required aria-describedby="q-ready-err">
+            <legend class="pc-q"><span class="pc-step-count">6 / 7</span>If it's a fit, how soon are you ready to commit?<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></legend>
+            <div class="pc-choices">
+              <label class="pc-choice"><input type="radio" name="How soon they can commit" value="This week" /> This week</label>
+              <label class="pc-choice"><input type="radio" name="How soon they can commit" value="In the next 2-4 weeks" /> In the next 2-4 weeks</label>
+              <label class="pc-choice"><input type="radio" name="How soon they can commit" value="Just looking for now" /> Just looking for now</label>
+            </div>
+            <p class="pc-field-error" id="q-ready-err" hidden></p>
+          </fieldset>
+
+          <fieldset class="pc-step" hidden data-required aria-describedby="q-budget-err">
+            <legend class="pc-q"><span class="pc-step-count">7 / 7</span>How much are you willing to invest to get this fixed?<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></legend>
+            <div class="pc-choices">
+              <label class="pc-choice"><input type="radio" name="Budget" value="Under $200" /> Under $200</label>
+              <label class="pc-choice"><input type="radio" name="Budget" value="$200 - $500" /> $200 - $500</label>
+              <label class="pc-choice"><input type="radio" name="Budget" value="$500 - $1,000" /> $500 - $1,000</label>
+              <label class="pc-choice"><input type="radio" name="Budget" value="$1,000+" /> $1,000+</label>
+            </div>
+            <p class="pc-field-error" id="q-budget-err" hidden></p>
           </fieldset>
 
           <p class="pc-submit-error" role="alert" hidden></p>
@@ -497,6 +489,23 @@
         return payload;
       }
 
+      // Once they've given their contact info, send it right away so a half-finished
+      // application still reaches the inbox and can be followed up on
+      var partialSent = false;
+      function sendPartial() {
+        if (partialSent) return;
+        partialSent = true;
+        var payload = buildPayload();
+        var name = form.elements["First name"].value.trim();
+        payload.subject = "Started an application (not finished yet)" + (name ? ": " + name : "");
+        if (typeof gtag === "function") gtag("event", "application_contact_info");
+        fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify(payload)
+        }).catch(function () {});
+      }
+
       function send() {
         nextBtn.disabled = true;
         backBtn.disabled = true;
@@ -518,8 +527,9 @@
             if (typeof gtag === "function") gtag("event", "generate_lead", { form: "coaching_application" });
             form.hidden = true;
             // "Not right now" applicants get pointed to the Pre-Date Call instead
-            var start = form.querySelector('input[name="When they can start ($500 upfront)"]:checked');
-            if (start && start.value === "Not right now") confirmBox = confirmLater;
+            var start = form.querySelector('input[name="How soon they can commit"]:checked');
+            var budget = form.querySelector('input[name="Budget"]:checked');
+            if ((start && start.value === "Just looking for now") || (budget && budget.value === "Under $200")) confirmBox = confirmLater;
             confirmBox.hidden = false;
             setProgress(steps.length, "Application sent");
             // The form may have been tall, so bring the confirmation into view
@@ -552,6 +562,7 @@
           focusStep(step);
           return;
         }
+        if (step.querySelector('input[name="email"]')) sendPartial();
         if (isLast()) send();
         else showStep(current + 1, true);
       });
