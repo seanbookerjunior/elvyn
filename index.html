@@ -241,14 +241,14 @@
         <div class="pc-confirm pc-confirm-later" tabindex="-1" hidden>
           <p class="pc-confirm-main">
             Got it. If the four weeks aren't right for you yet, start with one 1:1 call instead.
-            We plan your next date start to finish: where to go, what to text, when to make your move.
+            Bring whatever you're stuck on: a date coming up, a girl you can't read, or why things keep fizzling out.
           </p>
           <p class="pc-confirm-aside">
             One call, $100. Credited toward the 4 weeks if you start within 30 days.
           </p>
           <a href="https://buy.stripe.com/5kQ4gyfN87ZO8GT8jpbQY0b" class="btn btn-primary pc-confirm-btn"
              target="_blank" rel="noopener">
-            Book a Pre-Date Call
+            Book a 1:1 Game Plan Call
           </a>
         </div>
 
@@ -268,20 +268,21 @@
       </div>
     </section>
 
-    <!-- ===== Pre-Date Call ===== -->
+    <!-- ===== 1:1 Game Plan Call (was Pre-Date Call) ===== -->
     <section class="pc-section pc-predate" id="pre-date-call">
       <div class="pc-container">
-        <p class="pc-eyebrow">Pre-Date Call</p>
-        <h2 class="pc-h2">Have a date coming up?</h2>
+        <p class="pc-eyebrow">1:1 Game Plan Call</p>
+        <h2 class="pc-h2">Stuck on something with a woman?</h2>
         <p class="pc-body">
-          One call to plan it start to finish. Where to go, what to text before and after, and exactly
-          when and how to make your move so you're not stuck waiting for the right moment.
+          One call, one problem, one clear plan. A date coming up, a girl who went cold, texts that
+          go nowhere, or why you keep ending up in the friend zone. We look at what's happening and
+          you leave knowing exactly what to do next.
         </p>
         <p class="pc-body">
           $100, credited toward the four weeks if you start within 30 days. Limited calls per week.
         </p>
         <p class="pc-body">
-          How it works: pay, pick a time on my calendar, and we plan the whole date on the call.
+          How it works: pay, pick a time on my calendar, and we build your game plan on the call.
         </p>
 
         <div class="pc-cta">
@@ -536,7 +537,7 @@
             if (typeof gtag === "function") gtag("event", "generate_lead", { form: "coaching_application" });
             if (!form.elements.botcheck.checked) toPipeline(buildPayload(), "finished");
             form.hidden = true;
-            // "Not right now" applicants get pointed to the Pre-Date Call instead
+            // "Not right now" applicants get pointed to the $100 1:1 Game Plan Call instead
             var start = form.querySelector('input[name="How soon they can commit"]:checked');
             var budget = form.querySelector('input[name="Budget"]:checked');
             if ((start && start.value === "Just looking for now") || (budget && budget.value.indexOf("Not right now") === 0)) confirmBox = confirmLater;
