@@ -221,12 +221,10 @@
           </fieldset>
 
           <fieldset class="pc-step" hidden data-required aria-describedby="q-budget-err">
-            <legend class="pc-q"><span class="pc-step-count">7 / 7</span>How much are you willing to invest to get this fixed?<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></legend>
+            <legend class="pc-q"><span class="pc-step-count">7 / 7</span>Private coaching is $500 for 4 weeks. Are you ready to invest that to fix this?<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></legend>
             <div class="pc-choices">
-              <label class="pc-choice"><input type="radio" name="Budget" value="Under $200" /> Under $200</label>
-              <label class="pc-choice"><input type="radio" name="Budget" value="$200 - $500" /> $200 - $500</label>
-              <label class="pc-choice"><input type="radio" name="Budget" value="$500 - $1,000" /> $500 - $1,000</label>
-              <label class="pc-choice"><input type="radio" name="Budget" value="$1,000+" /> $1,000+</label>
+              <label class="pc-choice"><input type="radio" name="Budget" value="Yes, I'm ready" /> Yes, I'm ready</label>
+              <label class="pc-choice"><input type="radio" name="Budget" value="Not right now, show me the $100 one-time 1:1 call" /> Not right now, show me the $100 one-time 1:1 call</label>
             </div>
             <p class="pc-field-error" id="q-budget-err" hidden></p>
           </fieldset>
@@ -541,7 +539,7 @@
             // "Not right now" applicants get pointed to the Pre-Date Call instead
             var start = form.querySelector('input[name="How soon they can commit"]:checked');
             var budget = form.querySelector('input[name="Budget"]:checked');
-            if ((start && start.value === "Just looking for now") || (budget && budget.value === "Under $200")) confirmBox = confirmLater;
+            if ((start && start.value === "Just looking for now") || (budget && budget.value.indexOf("Not right now") === 0)) confirmBox = confirmLater;
             confirmBox.hidden = false;
             setProgress(steps.length, "Application sent");
             // The form may have been tall, so bring the confirmation into view
