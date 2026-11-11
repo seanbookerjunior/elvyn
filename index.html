@@ -20,7 +20,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
 
   <link rel="stylesheet" href="/styles.css?v=3" />
-  <link rel="stylesheet" href="/coaching-page.css?v=14" />
+  <link rel="stylesheet" href="/coaching-page.css?v=15" />
   <link rel="icon" type="image/png" href="/images/Elvyn new logo.PNG" />
 </head>
 
@@ -192,6 +192,12 @@
             <label class="pc-q" for="q-instagram">Instagram handle<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></label>
             <input type="text" id="q-instagram" name="Instagram" class="pc-input" placeholder="@yourhandle"
                    autocapitalize="off" autocorrect="off" spellcheck="false" aria-describedby="q-instagram-err" />
+            <p class="pc-ig-check" id="q-ig-check" hidden>
+              Make sure this is you: <a id="q-ig-link" href="#" target="_blank" rel="noopener"></a>
+            </p>
+            <label class="pc-choice pc-ig-confirm" id="q-ig-confirm" hidden>
+              <input type="checkbox" id="q-ig-ok" /> Yes, that's my profile
+            </label>
             <p class="pc-field-error" id="q-instagram-err" hidden></p>
           </fieldset>
 
@@ -201,6 +207,9 @@
             <input type="email" id="q-email" name="email" class="pc-input" autocomplete="email" inputmode="email"
                    autocapitalize="off" spellcheck="false" aria-describedby="q-email-err" />
             <p class="pc-field-error" id="q-email-err" hidden></p>
+            <label class="pc-q pc-q-sub" for="q-phone">Phone number <span class="pc-optional">(optional)</span></label>
+            <input type="tel" id="q-phone" name="Phone" class="pc-input" autocomplete="tel" inputmode="tel" aria-describedby="q-phone-hint" />
+            <p class="pc-hint" id="q-phone-hint">Only used if I can't reach you on Instagram.</p>
           </fieldset>
 
           <fieldset class="pc-step" hidden data-required>
@@ -464,6 +473,10 @@
             message = "Enter your age as a number.";
           } else if (required && !value) {
             message = "This one is required.";
+          } else if (field.id === "q-instagram" && !/^[a-z0-9._]{1,30}$/.test(igHandle(value))) {
+            message = "That doesn't look like an Instagram handle. Use just your username, like @yourname.";
+          } else if (field.id === "q-instagram" && !document.getElementById("q-ig-ok").checked) {
+            message = "Tap the link to check it's your profile, then tick the box.";
           } else if (field.type === "email" && field.validity.typeMismatch) {
             message = "That doesn't look like a valid email.";
           } else if (field.type === "number" && value) {
@@ -476,6 +489,33 @@
         return !message;
       }
 
+      // Instagram handle as typed: drop @, spaces and any instagram.com link around it
+      function igHandle(v) {
+        return v.trim().toLowerCase()
+          .replace(/^https?:\/\/(www\.)?instagram\.com\//, "")
+          .replace(/[/?#].*$/, "")
+          .replace(/^@+/, "")
+          .replace(/\s+/g, "");
+      }
+
+      // Show a link to the profile they typed so they can check it's really them
+      var igInput = document.getElementById("q-instagram");
+      var igCheck = document.getElementById("q-ig-check");
+      var igLink = document.getElementById("q-ig-link");
+      var igConfirm = document.getElementById("q-ig-confirm");
+      var igOk = document.getElementById("q-ig-ok");
+      igInput.addEventListener("input", function () {
+        var h = igHandle(igInput.value);
+        var show = /^[a-z0-9._]{1,30}$/.test(h);
+        igCheck.hidden = !show;
+        igConfirm.hidden = !show;
+        igOk.checked = false;
+        if (show) {
+          igLink.href = "https://www.instagram.com/" + h + "/";
+          igLink.textContent = "instagram.com/" + h;
+        }
+      });
+
       // Every question in order, with blanks marked, so the email reads cleanly
       function buildPayload() {
         var name = form.elements["First name"].value.trim();
@@ -486,10 +526,18 @@
           botcheck: form.elements.botcheck.checked
         };
         steps.forEach(function (step) {
-          var checked = step.querySelector("input:checked");
-          var field = checked || step.querySelector("input, textarea");
-          var value = checked ? checked.value : (field.type === "radio" ? "" : field.value.trim());
-          payload[field.name] = value || "(left blank)";
+          step.querySelectorAll("input[name], textarea[name]").forEach(function (field) {
+            if (field.type === "radio") {
+              if (!(field.name in payload)) {
+                var checked = step.querySelector('input[name="' + field.name + '"]:checked');
+                payload[field.name] = checked ? checked.value : "(left blank)";
+              }
+              return;
+            }
+            var value = field.value.trim();
+            if (field.id === "q-instagram" && value) value = "@" + igHandle(value);
+            payload[field.name] = value || "(left blank)";
+          });
         });
         return payload;
       }

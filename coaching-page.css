@@ -910,3 +910,39 @@ textarea.pc-input {
     padding: 0.8rem;
   }
 }
+
+/* Instagram check and optional phone on the application form */
+.pc-ig-check,
+.pc-hint {
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+  color: #9ca3af;
+}
+
+.pc-ig-check a {
+  color: #38bdf8;
+  font-weight: 600;
+  word-break: break-all;
+}
+
+.pc-ig-confirm {
+  margin-top: 0.6rem;
+}
+
+.pc-step.is-invalid .pc-ig-confirm {
+  border-color: #f87171;
+}
+
+.pc-q-sub {
+  margin-top: 1.4rem;
+}
+
+.pc-optional {
+  font-weight: 400;
+  color: #9ca3af;
+}
+
+.pc-ig-confirm[hidden],
+.pc-ig-check[hidden] {
+  display: none;
+}
