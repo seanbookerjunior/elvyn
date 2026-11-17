@@ -169,9 +169,9 @@
             <input type="email" id="q-email" name="email" class="pc-input" autocomplete="email" inputmode="email"
                    autocapitalize="off" spellcheck="false" aria-describedby="q-email-err" />
             <p class="pc-field-error" id="q-email-err" hidden></p>
-            <label class="pc-q pc-q-sub" for="q-phone">Phone number <span class="pc-optional">(optional)</span></label>
-            <input type="tel" id="q-phone" name="Phone" class="pc-input" autocomplete="tel" inputmode="tel" aria-describedby="q-phone-hint" />
-            <p class="pc-hint" id="q-phone-hint">Only used if I can't reach you on Instagram.</p>
+            <label class="pc-q pc-q-sub" for="q-phone">Phone number<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></label>
+            <input type="tel" id="q-phone" name="Phone" class="pc-input" autocomplete="tel" inputmode="tel" required aria-describedby="q-phone-hint q-email-err" />
+            <p class="pc-hint" id="q-phone-hint">So I can text you before our call.</p>
           </fieldset>
 
           <fieldset class="pc-step" hidden data-required>
@@ -423,6 +423,9 @@
             message = "Tap the link to check it's your profile, then tick the box.";
           } else if (field.type === "email" && field.validity.typeMismatch) {
             message = "That doesn't look like a valid email.";
+          } else if (step.querySelector("#q-phone") &&
+                     step.querySelector("#q-phone").value.replace(/\D/g, "").length < 10) {
+            message = "Enter your phone number, with area code.";
           } else if (field.type === "number" && value) {
             var age = Number(value);
             if (!Number.isInteger(age) || age < 18 || age > 99) message = "Enter your age as a whole number, 18 or older.";
