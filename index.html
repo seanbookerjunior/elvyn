@@ -172,6 +172,10 @@
             <label class="pc-q pc-q-sub" for="q-phone">Phone number<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></label>
             <input type="tel" id="q-phone" name="Phone" class="pc-input" autocomplete="tel" inputmode="tel" required aria-describedby="q-phone-hint q-email-err" />
             <p class="pc-hint" id="q-phone-hint">So I can text you before our call.</p>
+            <label class="pc-choice pc-camera-confirm">
+              <input type="checkbox" id="q-camera" name="Comfortable on camera" value="Yes" /> <span>I'm comfortable showing my face on camera for our call.<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></span>
+            </label>
+            <p class="pc-hint">The call works best from a laptop, desktop or iPad, not a phone.</p>
           </fieldset>
 
           <fieldset class="pc-step" hidden data-required>
@@ -426,6 +430,8 @@
           } else if (step.querySelector("#q-phone") &&
                      step.querySelector("#q-phone").value.replace(/\D/g, "").length < 10) {
             message = "Enter your phone number, with area code.";
+          } else if (step.querySelector("#q-camera") && !step.querySelector("#q-camera").checked) {
+            message = "Tick the box to confirm you're comfortable on camera.";
           } else if (field.type === "number" && value) {
             var age = Number(value);
             if (!Number.isInteger(age) || age < 18 || age > 99) message = "Enter your age as a whole number, 18 or older.";
@@ -474,6 +480,10 @@
         };
         steps.forEach(function (step) {
           step.querySelectorAll("input[name], textarea[name]").forEach(function (field) {
+            if (field.type === "checkbox") {
+              payload[field.name] = field.checked ? "Yes" : "No";
+              return;
+            }
             if (field.type === "radio") {
               if (!(field.name in payload)) {
                 var checked = step.querySelector('input[name="' + field.name + '"]:checked');

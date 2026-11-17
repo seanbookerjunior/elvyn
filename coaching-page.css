@@ -925,7 +925,8 @@ textarea.pc-input {
   word-break: break-all;
 }
 
-.pc-ig-confirm {
+.pc-ig-confirm,
+.pc-camera-confirm {
   margin-top: 0.6rem;
 }
 
