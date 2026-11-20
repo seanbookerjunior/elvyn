@@ -196,10 +196,9 @@
           </fieldset>
 
           <fieldset class="pc-step" hidden data-required aria-describedby="q-budget-err">
-            <legend class="pc-q"><span class="pc-step-count">7 / 7</span>The program is $3,000 for 3 months. Are you in a position to invest that if it's a fit?<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></legend>
+            <legend class="pc-q"><span class="pc-step-count">7 / 7</span>My 3-month 1:1 program is $3,000. You get weekly calls with me, texts and profile reviews, and a plan built around your situation. If we're a fit, are you ready to invest that in yourself?<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></legend>
             <div class="pc-choices">
-              <label class="pc-choice"><input type="radio" name="Budget" value="Yes" /> Yes</label>
-              <label class="pc-choice"><input type="radio" name="Budget" value="I could make it work if I'm confident it's the right fit" /> I could make it work if I'm confident it's the right fit</label>
+              <label class="pc-choice"><input type="radio" name="Budget" value="Yes, I'm ready" /> Yes, I'm ready</label>
               <label class="pc-choice"><input type="radio" name="Budget" value="Not right now" /> Not right now</label>
             </div>
             <p class="pc-field-error" id="q-budget-err" hidden></p>
@@ -394,6 +393,15 @@
         submitError.hidden = true;
         setProgress(i + 1);
         if (focus) focusStep(steps[i]);
+        trackStep(i);
+      }
+
+      // Log the first time someone reaches each step, so GA shows where people quit
+      var stepsSeen = {};
+      function trackStep(i) {
+        if (stepsSeen[i] || typeof gtag !== "function") return;
+        stepsSeen[i] = true;
+        gtag("event", "application_step", { step_number: i + 1, step_name: "Step " + (i + 1) + " of " + steps.length });
       }
 
       function setError(step, message) {
