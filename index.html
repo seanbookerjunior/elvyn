@@ -350,8 +350,8 @@
     // Application form: one question at a time, sent to Web3Forms with fetch
     (function () {
       var ACCESS_KEY = "148271e7-d8e6-4de9-b619-189de94cdc49";
-      // Google Apps Script web app: logs to the Applications tab and emails the applicant
-      var PIPELINE_URL = "";
+      // Sean's IG DM bot: tells it who applied (matched by Instagram handle) so it doesn't re-qualify or resend the booking link
+      var PIPELINE_URL = "https://elvyn-dm-pipeline.elvyn-dms.workers.dev/apply";
       function toPipeline(payload, stage) {
         if (!PIPELINE_URL) return;
         var data = {};
