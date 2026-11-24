@@ -417,6 +417,42 @@
         }
       }
 
+      // Junk filters: throwaway email domains, fake phone numbers, keyboard-mash answers
+      var JUNK_EMAIL_DOMAINS = /^(mailinator|guerrillamail|10minutemail|tempmail|temp-mail|yopmail|trashmail|sharklasers|getnada|dispostable|fakeinbox|throwawaymail|maildrop|example|test|asdf|qwerty)\./i;
+      function fakePhone(v) {
+        var d = v.replace(/\D/g, "").slice(-10);
+        return /^(\d)\1+$/.test(d) || d === "1234567890" || d === "0123456789" || d === "9876543210" || /^\d{3}555\d{4}$/.test(d);
+      }
+      var COMMON_WORDS = ("i im i'm my me a an the to and with of in on for how get getting want women woman girl girls " +
+        "date dates dating talk talking text texting confidence confident second first approach be is it that cant can't " +
+        "dont don't not no more feel help her she them they after when what keep being have am just never always " +
+        "know like relationship relationships attract attraction anxiety nervous friend zone apps app hinge tinder bumble " +
+        "conversation conversations flirt flirting kiss lose lost go out but so too at this do").split(" ");
+      function looksLikeJunk(v) {
+        var words = v.toLowerCase().match(/[a-z']+/g) || [];
+        if (v.replace(/\s/g, "").length < 15 || words.length < 4) return true;
+        var common = words.filter(function (w) { return COMMON_WORDS.indexOf(w) !== -1; }).length;
+        var noVowel = words.filter(function (w) { return w.length > 2 && !/[aeiouy]/.test(w); }).length;
+        var mashed = words.filter(function (w) { return w.length > 20 || /[bcdfghjklmnpqrstvwxz]{5,}/.test(w) || /(.)\1{3,}/.test(w); }).length;
+        return common < 2 || noVowel / words.length > 0.3 || mashed > 0;
+      }
+
+      // Check the email's domain can actually receive mail (fails open if the lookup is unavailable)
+      var domainChecked = {};
+      function emailDomainOk(email) {
+        var domain = (email.split("@")[1] || "").toLowerCase();
+        if (domain in domainChecked) return Promise.resolve(domainChecked[domain]);
+        function lookup(type) {
+          return fetch("https://dns.google/resolve?name=" + encodeURIComponent(domain) + "&type=" + type)
+            .then(function (r) { return r.json(); })
+            .then(function (j) { return j.Status === 0 && Array.isArray(j.Answer) && j.Answer.length > 0; });
+        }
+        return lookup("MX")
+          .then(function (ok) { return ok || lookup("A"); })
+          .then(function (ok) { domainChecked[domain] = ok; return ok; })
+          .catch(function () { return true; });
+      }
+
       function validate(step) {
         var required = step.hasAttribute("data-required");
         var message = "";
@@ -436,11 +472,21 @@
             message = "Tap the link to check it's your profile, then tick the box.";
           } else if (field.type === "email" && field.validity.typeMismatch) {
             message = "That doesn't look like a valid email.";
+          } else if (field.type === "email" && !/^[^@\s]+@[^@\s]+\.[a-z]{2,}$/i.test(value)) {
+            message = "That doesn't look like a valid email.";
+          } else if (field.type === "email" && JUNK_EMAIL_DOMAINS.test(value.split("@")[1])) {
+            message = "Use your real email so I can reach you.";
           } else if (step.querySelector("#q-phone") &&
                      step.querySelector("#q-phone").value.replace(/\D/g, "").length < 10) {
             message = "Enter your phone number, with area code.";
+          } else if (step.querySelector("#q-phone") && fakePhone(step.querySelector("#q-phone").value)) {
+            message = "Enter your real phone number.";
           } else if (step.querySelector("#q-camera") && !step.querySelector("#q-camera").checked) {
             message = "Tick the box to confirm you're comfortable on camera.";
+          } else if (field.id === "q-first-name" && !/^[\p{L}][\p{L} .'-]{0,39}$/u.test(value)) {
+            message = "Enter your first name, letters only.";
+          } else if (field.id === "q-problem" && looksLikeJunk(value)) {
+            message = "Write a real answer in a sentence or two, like \"I get first dates but never a second one.\"";
           } else if (field.type === "number" && value) {
             var age = Number(value);
             if (!Number.isInteger(age) || age < 18 || age > 99) message = "Enter your age as a whole number, 18 or older.";
@@ -583,7 +629,21 @@
           focusStep(step);
           return;
         }
-        if (step.querySelector('input[name="email"]')) sendPartial();
+        var emailField = step.querySelector('input[name="email"]');
+        if (emailField) {
+          nextBtn.disabled = true;
+          emailDomainOk(emailField.value.trim()).then(function (ok) {
+            nextBtn.disabled = false;
+            if (!ok) {
+              setError(step, "That email address doesn't exist. Check the spelling.");
+              focusStep(step);
+              return;
+            }
+            sendPartial();
+            showStep(current + 1, true);
+          });
+          return;
+        }
         if (isLast()) send();
         else showStep(current + 1, true);
       });
