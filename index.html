@@ -196,10 +196,13 @@
           </fieldset>
 
           <fieldset class="pc-step" hidden data-required aria-describedby="q-budget-err">
-            <legend class="pc-q"><span class="pc-step-count">7 / 7</span>The program's an investment of a few thousand. If we're a fit, are you in a position to invest in yourself right now?<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></legend>
+            <legend class="pc-q"><span class="pc-step-count">7 / 7</span>My 1:1 mentorship is $3,000 for 3 months. How much are you ready to invest in yourself to fix this?<span class="pc-required" aria-hidden="true">*</span><span class="pc-sr-only"> (required)</span></legend>
             <div class="pc-choices">
-              <label class="pc-choice"><input type="radio" name="Budget" value="Yes, I'm ready" /> Yes, I'm ready</label>
-              <label class="pc-choice"><input type="radio" name="Budget" value="Not right now" /> Not right now</label>
+              <label class="pc-choice"><input type="radio" name="Budget" value="Under $500" data-low /> Under $500</label>
+              <label class="pc-choice"><input type="radio" name="Budget" value="$500 to $1,500" data-low /> $500 to $1,500</label>
+              <label class="pc-choice"><input type="radio" name="Budget" value="$1,500 to $3,000" /> $1,500 to $3,000</label>
+              <label class="pc-choice"><input type="radio" name="Budget" value="$3,000 to $5,000" /> $3,000 to $5,000</label>
+              <label class="pc-choice"><input type="radio" name="Budget" value="$5,000+" /> $5,000+</label>
             </div>
             <p class="pc-field-error" id="q-budget-err" hidden></p>
           </fieldset>
@@ -593,10 +596,10 @@
             if (typeof gtag === "function") gtag("event", "generate_lead", { form: "coaching_application" });
             if (!form.elements.botcheck.checked) toPipeline(buildPayload(), "finished");
             form.hidden = true;
-            // "Not right now" applicants get the free community instead
+            // Budgets under $1,500 (and "just looking") get the free community instead of booking
             var start = form.querySelector('input[name="How soon they can commit"]:checked');
             var budget = form.querySelector('input[name="Budget"]:checked');
-            if ((start && start.value === "Just looking for now") || (budget && budget.value.indexOf("Not right now") === 0)) confirmBox = confirmLater;
+            if ((start && start.value === "Just looking for now") || (budget && budget.hasAttribute("data-low"))) confirmBox = confirmLater;
             confirmBox.hidden = false;
             setProgress(steps.length, "Application sent");
             // The form may have been tall, so bring the confirmation into view
